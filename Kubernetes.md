@@ -5,7 +5,7 @@
 建议穿插学习
 
 - Books：`Kubernetes in Action`, `Programing Kubernetes`
-- Videos: [https://space.bilibili.com/349215109/channel/detail?cid=92480](https://space.bilibili.com/349215109/channel/detail?cid=92480)
+- Videos: [Kubernetes 入门教程](https://space.bilibili.com/349215109/channel/detail?cid=92480)
 
 ---
 
