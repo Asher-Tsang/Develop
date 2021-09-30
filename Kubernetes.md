@@ -73,3 +73,41 @@ Kubernetes 是高度可配置且可扩展的。因此，大多数情况下，你
 ### 概述
 
 定制化的方法主要可分为 `配置（Configuration）`和 `扩展（Extensions）` 两种。 前者主要涉及改变参数标志、本地配置文件或者 API 资源；后者则需要额外运行一些程序或服务。
+
+### Configuration
+
+`Configuration` 参数标志和配置文件不总是可以修改的
+
+- [kubelet](https://kubernetes.io/zh/docs/reference/command-line-tools-reference/kubelet/)
+- [kube-apiserver](https://kubernetes.io/zh/docs/reference/command-line-tools-reference/kube-apiserver/)
+- [kube-controller-manager](https://kubernetes.io/zh/docs/reference/command-line-tools-reference/kube-controller-manager/)
+- [kube-scheduler](https://kubernetes.io/zh/docs/reference/command-line-tools-reference/kube-scheduler/)
+
+### Extensions
+
+`Extensions` 是一种 `Kubernetes` 原生支持的模式，可以编写高度可用的、运行稳定的自动化组件。
+
+编写客户端程序有一种特殊的*Controller（控制器）*模式，能够与 `Kubernetes` 很好地协同工作。控制器通常会读取某个对象的 `.spec`，或许还会执行一些操作，之后更新对象的 `.status`。
+
+控制器是 `Kubernetes` 的客户端。当 `Kubernetes` 充当客户端，调用某远程服务时，对应的远程组件称作 `Webhook`。 远程服务称作Webhook 后端。
+
+在 `Webhook` 模式中，`Kubernetes` 向远程服务发起网络请求。 在*可执行文件插件（Binary Plugin）*模式中，`Kubernetes` 执行某个可执行文件（程序）。
+
+![picture 1](.assets/kubernetes/d83ccf6bc491949f12367e25bfa202d5d97aca476a06f68c02a3e683a5d7bcc3.png)  
+
+### Custom Resources
+
+`资源（Resource）` 是 `Kubernetes API` 中的一个端点， 其中存储的是某个类别的 `API 对象` 的一个集合。 例如内置的 `pods` 资源包含一组 `Pod` 对象。
+
+### Operator
+
+自定义资源 API 与控制回路的组合称作 `Operator` 模式。 `Operator` 模式用来管理特定的、通常是有状态的应用。 这些自定义 API 和控制回路也可用来控制其他资源，如存储或策略。
+
+使用 Operator 可以自动化的事情包括：
+
+- 按需部署应用
+- 获取/还原应用状态的备份
+- 处理应用代码的升级以及相关改动。例如，数据库 schema 或额外的配置设置
+- 发布一个 service，要求不支持 Kubernetes API 的应用也能发现它
+- 模拟整个或部分集群中的故障以测试其稳定性
+- 在没有内部成员选举程序的情况下，为分布式应用选择首领角色
