@@ -93,7 +93,7 @@ Kubernetes 是高度可配置且可扩展的。因此，大多数情况下，你
 
 在 `Webhook` 模式中，`Kubernetes` 向远程服务发起网络请求。 在*可执行文件插件（Binary Plugin）*模式中，`Kubernetes` 执行某个可执行文件（程序）。
 
-![picture 1](.assets/kubernetes/d83ccf6bc491949f12367e25bfa202d5d97aca476a06f68c02a3e683a5d7bcc3.png)  
+![picture 1](.assets/Kubernetes/d83ccf6bc491949f12367e25bfa202d5d97aca476a06f68c02a3e683a5d7bcc3.png)  
 
 ### Custom Resources
 
